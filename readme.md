@@ -92,6 +92,45 @@ usage:
 }
 ```
 
+***1px 边框***
+>作者：铁皮饭盒
+>
+>链接：https://juejin.im/post/5d70a030f265da03a715f3fd
+>
+>来源：掘金
+>
+>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+```
+@mixin thinBorder($directionMaps: bottom,$color: #ccc,$radius: (0,0, 0,0),$position: after)
+```
+
+使用：
+```
+//单侧边框
+//生成.border-top-1px等4个单侧边框;
+@each $dir in (top,right,bottom,left) {
+  .border-#{$dir}-#{1}px {
+    @include thinBorder( $dir);
+  }
+}
+
+//多侧边框
+//生成"红色"的多侧边框 .border-top-left-red-1px
+.border-top-left-red-1px{
+  @include thinBorder((top,left), red);
+}
+
+//圆角边框
+//生成带100px圆角的边框 .border-top-left-round-1px
+.border-top-left-red-1px{
+  @include thinBorder(top, red, 100px);
+}
+
+//使用:before去生成边框
+.border-top-before{
+  @include thinBorder(top, red, 0, before);
+}
+```
 
 ---
 <small>不定时持续更新<small>
